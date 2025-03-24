@@ -16,19 +16,3 @@
 #root {
   flex-direction: column;
 }
-
-.button {
-  padding: 10px 30px;
-  border-radius: 20px;
-  background-color: #12A6C8;
-  color: #FFF;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  border: none;
-}
-
-.button:hover {
-
-}
