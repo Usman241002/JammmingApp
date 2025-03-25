@@ -1,1 +1,16 @@
+#results {
+  overflow-y: scroll;
+  width: 100%;
+}
 
+#result {
+  padding: 5px 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add {
+  background-color: #D9D9D9;
+  border: none;
+  cursor: pointer;
+}

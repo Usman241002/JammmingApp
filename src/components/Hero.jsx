@@ -1,6 +1,8 @@
 import React from "react";
 import '../styles/Hero.css';
 
+//create a local source of truth
+
 export default function Hero(props) {
   return(
     <section id = "hero">

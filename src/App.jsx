@@ -8,7 +8,7 @@ const CLIENT_ID = "464abfbc80244e468c2fa83506119bd5";
 const CLIENT_SECRET = "ec97fc44ba1c4485815be68574ea1b19";
 
 export default function App() {
-  const [searchInput, setSearchInput] = useState("");
+  const [songResults, setSongResults] = useState([])
 
   async function getAccessToken() {
     const response = await fetch("https://accounts.spotify.com/api/token", {
@@ -29,9 +29,8 @@ export default function App() {
 
     const accessToken = await getAccessToken();
     const inputValue = event.target.songInput.value;
-    setSearchInput(inputValue);
 
-    const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(searchInput)}&type=track&limit=10`, {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(inputValue)}&type=track&limit=20`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${accessToken}`,  // Use the access token here
@@ -39,6 +38,11 @@ export default function App() {
     });
 
     const data = await response.json();
+    setSongResults(data.tracks.items.map(tracks => ({
+      id: tracks.id,
+      name: tracks.name,
+      artists: tracks.artists.map(artist => artist.name).join(", "),
+    })));
     console.log(data)
   }
 
@@ -50,7 +54,7 @@ export default function App() {
         <section id = "resultsCard" className = "flexContainer">
           <h2>Results</h2>
 
-          <p>Example</p>
+          <Results results = {songResults} />
         </section>
 
         <section id = "playlistCard" className = "flexContainer">
