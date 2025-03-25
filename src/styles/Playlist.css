@@ -1,15 +1,17 @@
-#results {
-  overflow-y: auto;
+#playlist {
   width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  overflow-y: auto;
 }
 
-#result {
+#track {
   padding: 5px 0px;
   justify-content: space-between;
   align-items: center;
 }
 
-.add {
+.minus {
   background-color: #D9D9D9;
   border: none;
   cursor: pointer;

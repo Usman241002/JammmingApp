@@ -47,7 +47,7 @@ main {
   width: 500px;
 }
 
-#playlistCard input {
+#playlistName {
   width: 100%;
   font-size: 30px;
   font-style: normal;
@@ -78,4 +78,10 @@ main {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+#savePlaylistForm {
+  flex-direction: column;
+  width: 100%;
+  overflow-y: hidden;
 }

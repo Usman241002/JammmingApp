@@ -6,14 +6,13 @@ import plusIcon from "../assets/Plus.svg";
 
 export default function Results(props) {
   const results = props.results.map((track) => (
-    <div id = "result" className = "flexContainer">
+    <div id = "result" className = "flexContainer" key = {track.id}>
       <div id = "details" className = "flexContainer">
         <h3>{track.name}</h3>
         <p>{track.artists}</p>
-        <p>{track.id}</p>
       </div>
 
-      <button className="add">
+      <button onClick = {() => props.addSong(track)} className="add">
         <img src={plusIcon} alt="icon" />
       </button>
     </div>
