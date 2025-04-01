@@ -11,6 +11,8 @@ export default function App() {
   const [songResults, setSongResults] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
+  Spotify.getToken(); //Grants and console.logs Access token
+
   function addSong(track) {
     setPlaylist(prev => ([...prev, track]));
   }
@@ -24,7 +26,7 @@ export default function App() {
     <>
       <Header />
       <Hero //Add search song function
-      /> 
+      />
       {songResults.length ? <main className = "flexContainer">
         <section id = "resultsCard" className = "flexContainer">
           <h2>Results</h2>
