@@ -1,7 +1,7 @@
 import React from "react";
-import '../styles/Results.css';
+import './Results.css';
 
-import plusIcon from "../assets/Plus.svg";
+import plusIcon from "../../assets/Plus.svg";
 
 
 export default function Results(props) {

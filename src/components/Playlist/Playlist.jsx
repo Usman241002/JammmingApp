@@ -1,7 +1,7 @@
 import React from "react";
-import '../styles/Playlist.css';
+import "./Playlist.css";
 
-import minusIcon from "../assets/Minus.svg";
+import minusIcon from "../../assets/Minus.svg";
 
 
 export default function Playlist(props) {
