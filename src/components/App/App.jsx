@@ -11,7 +11,12 @@ export default function App() {
   const [songResults, setSongResults] = useState([]);
   const [playlist, setPlaylist] = useState([]);
 
-  Spotify.getToken(); //Grants and console.logs Access token
+  async function searchSong(event) {
+    event.preventDefault()
+    const term = event.target.songInput.value;
+    const results = await Spotify.search(term);
+    setSongResults(results);
+  }
 
   function addSong(track) {
     setPlaylist(prev => ([...prev, track]));
@@ -25,8 +30,7 @@ export default function App() {
   return(
     <>
       <Header />
-      <Hero //Add search song function
-      />
+      <Hero searchSong = {searchSong}/>
       {songResults.length ? <main className = "flexContainer">
         <section id = "resultsCard" className = "flexContainer">
           <h2>Results</h2>
@@ -35,7 +39,7 @@ export default function App() {
         </section>
 
         <section id = "playlistCard" className = "flexContainer">
-          <form id = "savePlaylistForm" onSubmit = {savePlaylist} className = "flexContainer">
+          <form id = "savePlaylistForm" className = "flexContainer">
             <input id = "playlistName" name = "playlistName" type = "text" placeholder = "My Playlist" required />
             <Playlist playlist = {playlist} removeSong = {removeSong}/>
             {playlist.length ? <input type = "submit" value = "Save To Spotify" className = "button flexContainer"/> : ""}

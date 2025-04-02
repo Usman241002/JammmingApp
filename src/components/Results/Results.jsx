@@ -9,7 +9,7 @@ export default function Results(props) {
     <div id = "result" className = "flexContainer" key = {track.id}>
       <div id = "details" className = "flexContainer">
         <h3>{track.name}</h3>
-        <p>{track.artists}</p>
+        <p>{track.artist}</p>
       </div>
 
       <button onClick = {() => props.addSong(track)} className="add">

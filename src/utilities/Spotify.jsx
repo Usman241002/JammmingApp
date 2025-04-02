@@ -14,9 +14,29 @@ const Spotify = {
     })
 
     const data = await response.json();
-    console.log(data);
+    return data;
+  },
 
+  async search(term) {
+    try {
+      const accessToken = await this.getToken();
+      const response = await fetch(`${base}/v1/search?q=${encodeURIComponent(term)}&type=track&market=GB&limit=15&offset=0`, {
+        headers: {
+          "Authorization": `Bearer ${(accessToken.access_token)}`
+        }
+      })
 
+      const data = await response.json()
+      return data.tracks.items.map(track => ({
+        id: track.id,
+        name: track.name,
+        artist: track.artists[0].name,
+        album: track.album.name,
+        uri: track.uri
+      }));
+    } catch(error) {
+      console.log(error)
+    }
   }
 }
 
