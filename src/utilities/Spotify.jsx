@@ -73,9 +73,11 @@ const Spotify = {
             uris: track_uris, // Array of track URIs
         })
       });
-      const data = await savePlaylistResponse.json();
-      console.log(data);
-      return;
+      if(savePlaylistResponse.ok) {
+        return "Playlist Created!";
+      } else {
+        return "Error Creating Playlist."
+      }
     } catch(error) {
       console.log(error)
     }

@@ -21,6 +21,11 @@ main {
   margin-bottom: 60px;
 }
 
+#message {
+  margin: 20px;
+  font-size: 26px;
+}
+
 #resultsCard, #playlistCard {
   height: 550px;
   border-radius: 10px;

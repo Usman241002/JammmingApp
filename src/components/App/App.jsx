@@ -10,6 +10,7 @@ import Spotify from "../../utilities/Spotify";
 export default function App() {
   const [songResults, setSongResults] = useState([]);
   const [playlist, setPlaylist] = useState([]);
+  const [message, setMessage] = useState("");
 
   async function searchSong(event) {
     event.preventDefault()
@@ -21,7 +22,7 @@ export default function App() {
   async function savePlaylist(event) {
     event.preventDefault();
     const playlistName = event.target.playlistName.value;
-    const data = await Spotify.savePlaylist(playlistName, playlist);
+    setMessage(await Spotify.savePlaylist(playlistName, playlist));
   }
 
   async function addSong(track) {
@@ -50,6 +51,7 @@ export default function App() {
             <input id = "playlistName" name = "playlistName" type = "text" placeholder = "My Playlist" required />
             <Playlist playlist = {playlist} removeSong = {removeSong}/>
             {playlist.length ? <input type = "submit" value = "Save To Spotify" className = "button flexContainer"/> : ""}
+            {message && <p id = "message">{message}</p>}
           </form>
 
         </section>
