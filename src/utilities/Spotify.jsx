@@ -1,6 +1,6 @@
 const clientId = '464abfbc80244e468c2fa83506119bd5';
 const clientSecret = 'ec97fc44ba1c4485815be68574ea1b19';
-const redirectURI = "http://localhost:5173/callback";
+const redirectURI = "https://jammming-ukhalid-dev.netlify.app";
 const base = "https://api.spotify.com";
 let accessToken;
 
