@@ -9,7 +9,7 @@ export default function Playlist(props) {
     <div id = "track" className = "flexContainer" key = {track.id}>
       <div id = "details" className = "flexContainer">
         <h3>{track.name}</h3>
-        <p>{track.artists}</p>
+        <p>{track.artist}</p>
       </div>
 
       <button onClick = {() => (props.removeSong(track.id))} className="minus">

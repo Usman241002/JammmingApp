@@ -18,8 +18,15 @@ export default function App() {
     setSongResults(results);
   }
 
-  function addSong(track) {
+  async function savePlaylist(event) {
+    event.preventDefault();
+    const playlistName = event.target.playlistName.value;
+    const data = await Spotify.savePlaylist(playlistName, playlist);
+  }
+
+  async function addSong(track) {
     setPlaylist(prev => ([...prev, track]));
+    await console.log(playlist);
   }
 
   function removeSong(trackId) {
@@ -39,7 +46,7 @@ export default function App() {
         </section>
 
         <section id = "playlistCard" className = "flexContainer">
-          <form id = "savePlaylistForm" className = "flexContainer">
+          <form id = "savePlaylistForm" onSubmit = {savePlaylist} className = "flexContainer">
             <input id = "playlistName" name = "playlistName" type = "text" placeholder = "My Playlist" required />
             <Playlist playlist = {playlist} removeSong = {removeSong}/>
             {playlist.length ? <input type = "submit" value = "Save To Spotify" className = "button flexContainer"/> : ""}
