@@ -10,7 +10,12 @@ import Spotify from "../../utilities/Spotify";
 export default function App() {
   const [songResults, setSongResults] = useState([]);
   const [playlist, setPlaylist] = useState([]);
+  const [search, setSearch] = useState("")
   const [message, setMessage] = useState("");
+
+  async function onChange(event) {
+    setSearch(event.target.value);
+  }
 
   async function searchSong(event) {
     event.preventDefault()
@@ -38,7 +43,7 @@ export default function App() {
   return(
     <>
       <Header />
-      <Hero searchSong = {searchSong}/>
+      <Hero searchSong = {searchSong} onChange = {onChange} text = {search}/>
       {songResults.length ? <main className = "flexContainer">
         <section id = "resultsCard" className = "flexContainer">
           <h2>Results</h2>
